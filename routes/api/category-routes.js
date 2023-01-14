@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try {
     const allCategoriesData = await Category.findAll({
-      include: [{ model: Product, through: ProductTag, as: "category_products"}]
+      include: [{ model: Product }]
     })
     res.status(200).json(allCategoriesData)
   } catch (err) {
@@ -16,12 +16,14 @@ router.get('/', async (req, res) => {
   }
 });
 
+// SEQUELIZE EAGER LOADING ERROR FOR GET ALL
+
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
     const categoryData = await Category.findByPk(req.params.id, {
-      include: [{ model: Product, through: ProductTag, as: "category_products"}]
+      include: [{ model: Product }]
     })
     res.status(200).json(categoryData)
   } catch (err) {
