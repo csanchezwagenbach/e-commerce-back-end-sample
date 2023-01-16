@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Category, Product, ProductTag } = require('../../models');
 
 // The `/api/categories` endpoint
-// SEE IF THIS ONE WORKS, CURIOUS ABOUT HOW INCLUDE WILL WORK HERE
+
 router.get('/', async (req, res) => {
   // find all categories
   // be sure to include its associated Products
@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// SEQUELIZE EAGER LOADING ERROR FOR GET ALL
 
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
@@ -33,7 +32,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   // create a new category
-  // hypothetical req.body 
+  //  req.body will look like 
   //{ category_name: "STRING" }
   try {
     const category = await Category.create(req.body)

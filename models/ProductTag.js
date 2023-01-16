@@ -1,7 +1,9 @@
+// Import required parts of sequelize library
 const { Model, DataTypes } = require('sequelize');
-
+// Import database connection
 const sequelize = require('../config/connection');
 
+// Initialize ProductTag model (through table connecting products with tags) by extending off Sequelize's Model class
 class ProductTag extends Model {}
 
 ProductTag.init(
